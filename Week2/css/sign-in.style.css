@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "./global.css";
 
 body {
   background-color: #F0F6FF;
@@ -10,6 +6,11 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Pretendard', sans-serif;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
 }
 
 .wrapper {
@@ -21,6 +22,8 @@ body {
   right: 0;
   left: 0;
   margin: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .logo {
@@ -95,6 +98,8 @@ input:focus {
   position: absolute;
   right: 10px;
   top: 237px;
+  width: 16px;
+  height: 16px;
 }
 
 button {
@@ -136,11 +141,12 @@ button {
   height: 66px;
   padding: 12px 24px 12px 24px;
   border: 1px;
-  justify: space-between;
+  justify-content: space-between;
 }
 
 .social a {
   text-decoration: none;
+  padding: 8px;
 }
 
 .social p {
@@ -152,6 +158,13 @@ button {
 .social .icon {
   position: absolute;
   top: 50%;
-  right: 5%;
+  right: 2%;
   transform: translate(0%, -50%);
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
 }
