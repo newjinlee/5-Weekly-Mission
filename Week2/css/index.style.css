@@ -208,13 +208,17 @@ br.break-t {
 
 @media screen and (max-width: 1199px) {
 
-  .nav {
-    padding: 0 32px;
+  nav {
+    width: 100%;
+    height: 9.3rem;
+    padding: 20px 32px;
+    gap: 8px;
   }
 
   .gnb {
+    max-width: 799px;
     width: 100%;
-    min-width: 800px;
+    height: 5.3rem;
   }
 
   br.break-t {
@@ -270,29 +274,127 @@ br.break-t {
 
 @media screen and (max-width: 767px) {
 
-  .nav {
-    margin: 0;
+  nav {
+    width: 100%;
+    height: 6.3rem;
+    padding: 13px 32px;
   }
 
-  br.break-d {
-    display: none;
+  .gnb {
+    min-width: 32.6rem;
+    width: 100%;
+    height: 3.7rem;
+    justify-content: space-between;
   }
 
-  .hero-header h1 {
+  .cta-short {
+    width: 8rem;
+    height: 3.7rem;
+    padding: 10px 16px 10px 16px;
+    border-radius: 8px;
+    gap: 10px;
+  }
+
+  .slogan {
     font-size: 32px;
+    line-height: 42px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+
+  .cta-long {
+    width: 20rem;
+    height: 3.7rem;
+    align-items: center;
+    padding: 10px 16px 10px 16px;
+  }
+
+  .hero-image {
+    width: 32.5rem;
+    height: 16rem;
+    height: auto;
+    padding: 0;
   }
 
   section {
     display: grid;
     justify-content: start;
     align-items: center;
-    padding: 50px 0;
+    padding: 0;
     height: auto;
-    grid-template:
-      "title"
-      "description"
-      "image"
-      / 1fr;
     row-gap: 1rem;
   }
+
+  section:nth-of-type(odd) {
+    grid-template:
+      ". title ."
+      ". image ."
+      ". description ."
+      / 32px 1fr 32px;
+  }
+
+  section:nth-of-type(even) {
+    grid-template:
+      ". title ."
+      ". image ."
+      ". description ."
+      / 32px 1fr 32px;
+  }
+
+  .title {
+    grid-area: title;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 28.64px;
+    letter-spacing: -0.03rem;
+  }
+
+  .description {
+    grid-area: description;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #6b6b6b;
+    line-height: 22.5px;
+  }
+
+  .content-image {
+    grid-area: image;
+    width: 32.5rem;
+    height: 26.591rem;
+  }
+
+  footer {
+    height: 200px;
+    padding: 32px 32px 32px 32px;
+  }
+
+  .footer-box {
+    height: 96px;
+    position: relative;
+    font-family: 'Acme';
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .copyright {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  .footer-links {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    height: 20px;
+    gap: 30px;
+  }
+
+  .sns {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
 }
