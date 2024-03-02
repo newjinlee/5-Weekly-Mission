@@ -8,11 +8,6 @@ body {
   font-family: 'Pretendard', sans-serif;
 }
 
-.helper {
-  display: inline-block;
-  height: 100%;
-}
-
 .wrapper {
   width: 400px;
   height: 491px;
@@ -162,9 +157,14 @@ button {
   transform: translate(0%, -50%);
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 1199px) {
   .wrapper {
-    margin-left: 32px;
-    margin-right: 32px;
+    bottom: 5%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    bottom: 10%;
   }
 }
