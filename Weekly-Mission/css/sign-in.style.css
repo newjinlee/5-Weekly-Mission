@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "./global.css";
 
 body {
   background-color: #F0F6FF;
@@ -21,6 +17,8 @@ body {
   right: 0;
   left: 0;
   margin: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .logo {
@@ -91,16 +89,12 @@ input:focus {
   outline-color: blue;
 }
 
-#eyeiconpw {
+#eyeicon {
   position: absolute;
   right: 10px;
   top: 237px;
-}
-
-#eyeiconchpw {
-  position: absolute;
-  right: 10px;
-  top: 337px;
+  width: 16px;
+  height: 16px;
 }
 
 button {
@@ -142,11 +136,12 @@ button {
   height: 66px;
   padding: 12px 24px 12px 24px;
   border: 1px;
-  justify: space-between;
+  justify-content: space-between;
 }
 
 .social a {
   text-decoration: none;
+  padding: 8px;
 }
 
 .social p {
@@ -158,6 +153,18 @@ button {
 .social .icon {
   position: absolute;
   top: 50%;
-  right: 5%;
+  right: 2%;
   transform: translate(0%, -50%);
+}
+
+@media screen and (max-width: 1199px) {
+  .wrapper {
+    bottom: 5%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    bottom: 10%;
+  }
 }

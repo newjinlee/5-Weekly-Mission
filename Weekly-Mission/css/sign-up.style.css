@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import "./global.css";
 
 body {
   background-color: #F0F6FF;
@@ -21,6 +17,8 @@ body {
   right: 0;
   left: 0;
   margin: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .logo {
@@ -91,10 +89,20 @@ input:focus {
   outline-color: blue;
 }
 
-#eyeicon {
+#eyeiconpw {
   position: absolute;
   right: 10px;
   top: 237px;
+  width: 16px;
+  height: 16px;
+}
+
+#eyeiconchpw {
+  position: absolute;
+  right: 10px;
+  top: 337px;
+  width: 16px;
+  height: 16px;
 }
 
 button {
@@ -154,4 +162,16 @@ button {
   top: 50%;
   right: 5%;
   transform: translate(0%, -50%);
+}
+
+@media screen and (max-width: 1199px) {
+  .wrapper {
+    bottom: 5%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    bottom: 10%;
+  }
 }
