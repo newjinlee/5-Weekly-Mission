@@ -1,4 +1,6 @@
-document.getElementById('email').addEventListener('focusout', function() {
+/* 이메일 input */
+
+document.getElementById('email').addEventListener('focusout', function () {
   var emailInput = this.value.trim();
   var errorElement = document.getElementById('email-error');
 
@@ -29,3 +31,44 @@ function isValidEmail(email) {
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+
+/* 로그인 기능 */
+
+document.getElementById('signin-form').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  var emailInput = document.getElementById('email').value.trim();
+  var passwordInput = document.getElementById('current-password').value.trim();
+
+  // 예시 이메일 비밀번호
+  var correctEmail = 'test@codeit.com';
+  var correctPassword = 'codeit101';
+
+  var emailErrorElement = document.getElementById('email-error');
+  var passwordErrorElement = document.getElementById('password-error');
+
+  if (emailInput === correctEmail && passwordInput === correctPassword) {
+    // 로그인이 성공한 경우
+    window.location.href = './folder.html';
+  } else {
+    // 로그인이 실패한 경우
+    if (emailInput !== correctEmail || emailErrorElement) {
+      emailErrorElement = document.createElement('div');
+      emailErrorElement.id = 'email-error';
+      emailErrorElement.textContent = '이메일을 확인해 주세요.';
+      emailErrorElement.style.color = 'red';
+      var emailInputElement = document.getElementById('email');
+      emailInputElement.parentNode.insertBefore(emailErrorElement, emailInputElement.nextSibling);
+      console.log("이메일 오류");
+    }
+    if (passwordInput !== correctPassword || passwordErrorElement) {
+      passwordErrorElement = document.createElement('div');
+      passwordErrorElement.id = 'email-error';
+      passwordErrorElement.textContent = '비밀번호를 확인해 주세요.';
+      passwordErrorElement.style.color = 'red';
+      var passwordInputElement = document.getElementById('current-password');
+      passwordInputElement.parentNode.insertBefore(passwordErrorElement, passwordInputElement.nextSibling);
+      console.log("비밀번호 오류");
+    }
+  }
+});
