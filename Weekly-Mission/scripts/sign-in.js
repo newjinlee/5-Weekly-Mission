@@ -32,6 +32,27 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
+/* 비밀번호 input */
+
+document.getElementById('current-password').addEventListener('focusout', function () {
+  var passwordinput = this.value.trim();
+  var errorElement = document.getElementById('password-error');
+
+  if (passwordinput === '') {
+    if (!errorElement) {
+      errorElement = document.createElement('div');
+      errorElement.id = 'password-error';
+      errorElement.textContent = '비밀번호를 입력해 주세요.';
+      errorElement.style.color = 'red';
+      this.parentNode.insertBefore(errorElement, this.nextSibling);
+    }
+  } else {
+    if (errorElement) {
+      errorElement.parentNode.removeChild(errorElement);
+    }
+  }
+});
+
 /* 로그인 기능 */
 
 document.getElementById('signin-form').addEventListener('submit', function (event) {
