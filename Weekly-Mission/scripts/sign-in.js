@@ -3,8 +3,10 @@
 document.getElementById('email').addEventListener('focusout', function () {
   var emailInput = this.value.trim();
   var errorElement = document.getElementById('email-error');
+  var emailField = document.getElementById('email');
 
   if (emailInput === '') {
+    emailField.style.border = '1px solid red';
     if (!errorElement) {
       errorElement = document.createElement('div');
       errorElement.id = 'email-error';
@@ -18,6 +20,7 @@ document.getElementById('email').addEventListener('focusout', function () {
       errorElement.id = 'email-error';
       errorElement.textContent = '올바른 이메일 주소가 아닙니다.';
       errorElement.style.color = 'red';
+      emailField.style.border = '1px solid red';
       this.parentNode.insertBefore(errorElement, this.nextSibling);
     }
   } else {
@@ -37,8 +40,10 @@ function isValidEmail(email) {
 document.getElementById('current-password').addEventListener('focusout', function () {
   var passwordinput = this.value.trim();
   var errorElement = document.getElementById('password-error');
+  var passwordField = document.getElementById('current-password');
 
   if (passwordinput === '') {
+    passwordField.style.border = '1px solid red';
     if (!errorElement) {
       errorElement = document.createElement('div');
       errorElement.id = 'password-error';
@@ -79,6 +84,7 @@ document.getElementById('signin-form').addEventListener('submit', function (even
       emailErrorElement.textContent = '이메일을 확인해 주세요.';
       emailErrorElement.style.color = 'red';
       var emailInputElement = document.getElementById('email');
+      emailInputElement.style.border = '1px solid red';
       emailInputElement.parentNode.insertBefore(emailErrorElement, emailInputElement.nextSibling);
       console.log("이메일 오류");
     }
@@ -88,6 +94,7 @@ document.getElementById('signin-form').addEventListener('submit', function (even
       passwordErrorElement.textContent = '비밀번호를 확인해 주세요.';
       passwordErrorElement.style.color = 'red';
       var passwordInputElement = document.getElementById('current-password');
+      passwordInputElement.style.border = '1px solid red';
       passwordInputElement.parentNode.insertBefore(passwordErrorElement, passwordInputElement.nextSibling);
       console.log("비밀번호 오류");
     }
