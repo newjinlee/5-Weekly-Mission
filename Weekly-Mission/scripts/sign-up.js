@@ -60,7 +60,7 @@ document.getElementById('current-password').addEventListener('focusout', functio
 
 /* 로그인 기능 */
 
-document.getElementById('signin-form').addEventListener('submit', function (event) {
+document.getElementById('signup-form').addEventListener('submit', function (event) {
   event.preventDefault();
 
   const emailInput = document.getElementById('email').value.trim();
