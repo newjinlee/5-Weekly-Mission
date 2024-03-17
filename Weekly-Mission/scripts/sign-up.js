@@ -2,7 +2,7 @@
 
 document.getElementById('email').addEventListener('focusout', function () {
   const emailInput = this.value.trim();
-  const errorElement = document.getElementById('email-error');
+  let errorElement = document.getElementById('email-error');
   const emailField = document.getElementById('email');
 
   if (emailInput === '') {
@@ -30,16 +30,46 @@ document.getElementById('email').addEventListener('focusout', function () {
   }
 });
 
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+/* 데이터 유효성 검증 */
+const userSchema = {
+  email: {
+    validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+  },
+  password: {
+    validate: (value) => !!value
+  }
+};
+
+function validateData(data, schema) {
+  const errors = {};
+  for (const key in schema) {
+    const validator = schema[key].validate;
+    const value = data[key];
+    if (!validator(value)) {
+      errors[key] = `${key} is invalid.`;
+    }
+  }
+  return errors;
 }
+
+const userData = {
+  email: "test@codeit.com",
+  password: "codeit101"
+};
+
+const validationErrors = validateData(userData, userSchema);
+if (Object.keys(validationErrors).length === 0) {
+  console.log("Data is valid.");
+} else {
+  console.log("Validation errors:", validationErrors);
+}
+
 
 /* 비밀번호 input */
 
 document.getElementById('current-password').addEventListener('focusout', function () {
   const passwordinput = this.value.trim();
-  const errorElement = document.getElementById('password-error');
+  let errorElement = document.getElementById('password-error');
   const passwordField = document.getElementById('current-password');
 
   if (passwordinput === '') {
@@ -78,25 +108,36 @@ document.getElementById('signup-form').addEventListener('submit', function (even
     window.location.href = './folder.html';
   } else {
     // 로그인이 실패한 경우
-    if (emailInput !== correctEmail || emailErrorElement) {
-      emailErrorElement = document.createElement('div');
-      emailErrorElement.id = 'email-error';
-      emailErrorElement.textContent = '이메일을 확인해 주세요.';
-      emailErrorElement.style.color = 'red';
+    if (emailInput !== correctEmail) {
       const emailInputElement = document.getElementById('email');
+      let existingErrorElement = document.getElementById('email-error');
       emailInputElement.style.border = '1px solid red';
-      emailInputElement.parentNode.insertBefore(emailErrorElement, emailInputElement.nextSibling);
-      console.log("이메일 오류");
+      if (!existingErrorElement) {
+        const newErrorElement = document.createElement('div');
+        newErrorElement.id = 'email-error';
+        newErrorElement.textContent = '이메일을 확인해 주세요.';
+        newErrorElement.style.color = 'red';
+        emailInputElement.parentNode.insertBefore(newErrorElement, emailInputElement.nextSibling);
+      } else {
+        existingErrorElement.textContent = '이메일을 확인해 주세요.'; // 이미 존재하는 에러 요소가 있다면, 내용만 갱신
+      }
     }
-    if (passwordInput !== correctPassword || passwordErrorElement) {
-      passwordErrorElement = document.createElement('div');
-      passwordErrorElement.id = 'email-error';
-      passwordErrorElement.textContent = '비밀번호를 확인해 주세요.';
-      passwordErrorElement.style.color = 'red';
+
+    if (passwordInput !== correctPassword) {
       const passwordInputElement = document.getElementById('current-password');
+      let existingErrorElement = document.getElementById('password-error');
       passwordInputElement.style.border = '1px solid red';
-      passwordInputElement.parentNode.insertBefore(passwordErrorElement, passwordInputElement.nextSibling);
-      console.log("비밀번호 오류");
+    
+      if (!existingErrorElement) {
+        const newErrorElement = document.createElement('div');
+        newErrorElement.id = 'password-error';
+        newErrorElement.textContent = '비밀번호를 확인해 주세요.';
+        newErrorElement.style.color = 'red';
+        passwordInputElement.parentNode.insertBefore(newErrorElement, passwordInputElement.nextSibling);
+      } else {
+        existingErrorElement.textContent = '비밀번호를 확인해 주세요.';
+      }
     }
+
   }
 });
