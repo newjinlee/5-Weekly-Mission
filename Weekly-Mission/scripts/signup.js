@@ -75,16 +75,6 @@ function validateConfirmPasswordInput(confirmPassword) {
   return true;
 }
 
-const passwordToggleButton = document.querySelector("#password-toggle");
-passwordToggleButton.addEventListener("click", () =>
-  togglePassword(passwordInput, passwordToggleButton)
-);
-
-const confirmPasswordToggleButton = document.querySelector("#confirm-password-toggle");
-confirmPasswordToggleButton.addEventListener("click", () =>
-  togglePassword(confirmPasswordInput, confirmPasswordToggleButton)
-);
-
 const signForm = document.querySelector("#form");
 signForm.addEventListener("submit", submitForm);
 function submitForm(event) {

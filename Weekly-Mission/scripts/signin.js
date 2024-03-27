@@ -39,11 +39,6 @@ function validatePasswordInput(password) {
   removeInputError({ input: passwordInput, errorMessage: passwordErrorMessage });
 }
 
-const passwordToggleButton = document.querySelector("#password-toggle");
-passwordToggleButton.addEventListener("click", () =>
-  togglePassword(passwordInput, passwordToggleButton)
-);
-
 const signForm = document.querySelector("#form");
 signForm.addEventListener("submit", submitForm);
 async function submitForm(event) {
