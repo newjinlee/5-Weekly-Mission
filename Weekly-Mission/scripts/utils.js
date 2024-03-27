@@ -7,7 +7,6 @@ export const TEST_USER = {
   password: "codeit101",
 };
 
-
 /* 요소에 입력 오류 설정, 오류 메시지 표시 */
 export function setInputError(elements, errorMessage) {
   elements.input.classList.add(SIGN_INPUT_ERROR_CLASSNAME);
