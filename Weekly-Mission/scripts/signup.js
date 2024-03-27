@@ -4,7 +4,10 @@ import {
   isEmailValid,
   isPasswordValid,
   TEST_USER,
+  redirectToIfAccessTokenExists,
 } from "./utils.js";
+
+redirectToIfAccessTokenExists("/folder");
 
 const emailInput = document.querySelector("#email");
 const emailErrorMessage = document.querySelector("#email-error-message");
@@ -64,7 +67,7 @@ function validateConfirmPasswordInput(confirmPassword) {
   if (passwordInput.value !== confirmPassword) {
     setInputError(
       { input: confirmPasswordInput, errorMessage: confirmPasswordErrorMessage },
-      "비밀번호가 일치하지 않습니다."
+      "비밀번호가 일치하지 않아요."
     );
     return false;
   }

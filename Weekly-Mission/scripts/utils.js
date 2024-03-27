@@ -2,6 +2,11 @@ const SIGN_INPUT_ERROR_CLASSNAME = "sign-input-error";
 const ERROR_MESSAGE_CLASSNAME = "error-message-on";
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
+export const TEST_USER = {
+  email: "test@codeit.com",
+  password: "codeit101",
+};
+
 export function setInputError(elements, message) {
   elements.input.className += ` ${SIGN_INPUT_ERROR_CLASSNAME}`;
   elements.errorMessage.className += ` ${ERROR_MESSAGE_CLASSNAME}`;
@@ -24,7 +29,9 @@ export function isPasswordValid(password) {
   return isEightLettersOrMore && hasNumberAndCharacter;
 }
 
-export const TEST_USER = {
-  email: "test@codeit.com",
-  password: "codeit101",
-};
+export function redirectToIfAccessTokenExists(destination) {
+  const accessToken = localStorage.getItem("accessToken");
+  if (accessToken) {
+    location.replace(destination);
+  }
+}
